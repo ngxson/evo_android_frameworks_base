@@ -24,6 +24,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.text.format.DateFormat;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.widget.TextView;
 
 import com.android.systemui.R;
@@ -113,7 +114,21 @@ public class AnimatableClockView extends TextView {
 
     void refreshTime() {
         mTime.setTimeInMillis(System.currentTimeMillis());
+        /*
         setText(DateFormat.format(mFormat, mTime));
+        */
+        // ngxson patch
+        if (mIsSingleLine) {
+            setSingleLine(false);
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 38);
+            setPadding(0, 0, 0, 20);
+            setTypeface(null);
+            setLineSpacing(0, 1f);
+            setText(FrenchNumberToWords.getCurrentTime());
+        } else {
+            setText(DateFormat.format(mFormat, mTime));
+        }
+        // end
         setContentDescription(DateFormat.format(mDescFormat, mTime));
     }
 

@@ -199,6 +199,7 @@ public class KeyguardClockSwitchController extends ViewController<KeyguardClockS
         }
         updateAodIcons();
 
+        /*
         if (mSmartspaceController.isEnabled()) {
             mSmartspaceView = mSmartspaceController.buildAndConnectView(mView);
 
@@ -229,6 +230,20 @@ public class KeyguardClockSwitchController extends ViewController<KeyguardClockS
             mView.setSmartspaceView(mSmartspaceView);
             mSmartspaceTransitionController.setLockscreenSmartspace(mSmartspaceView);
         }
+        */
+        // ngxson patch
+        // keyguard_status_area
+        View ksa = mView.findViewById(R.id.keyguard_status_area);
+        ksa.setVisibility(View.GONE);
+        updateClockLayout();
+        // notification_icon_container
+        View nic = mView.findViewById(
+                R.id.left_aligned_notification_icon_container);
+        RelativeLayout.LayoutParams lp =
+                (RelativeLayout.LayoutParams) nic.getLayoutParams();
+        lp.addRule(RelativeLayout.BELOW, R.id.lockscreen_clock_view);
+        nic.setLayoutParams(lp);
+        // end
     }
 
     int getNotificationIconAreaHeight() {

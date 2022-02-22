@@ -94,8 +94,10 @@ public class KeyguardClockSwitch extends RelativeLayout {
     public void onDensityOrFontScaleChanged() {
         mLargeClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mContext.getResources()
                 .getDimensionPixelSize(R.dimen.large_clock_text_size));
+        /*
         mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mContext.getResources()
                 .getDimensionPixelSize(R.dimen.clock_text_size));
+        */
 
         mClockSwitchYAmount = mContext.getResources().getDimensionPixelSize(
                 R.dimen.keyguard_clock_switch_y_shift);
