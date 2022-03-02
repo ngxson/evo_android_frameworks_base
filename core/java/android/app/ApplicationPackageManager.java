@@ -709,12 +709,18 @@ public class ApplicationPackageManager extends PackageManager {
                 }
             };
 
+    private static final String DEVICE = "org.evolution.device";
+
+    private static final String[] pixel6Codenames = {
+            "oriole",
+            "raven",
+    };
+
     private static final String[] featuresPixel = {
             "com.google.android.apps.photos.PIXEL_2019_PRELOAD",
             "com.google.android.apps.photos.PIXEL_2019_MIDYEAR_PRELOAD",
             "com.google.android.apps.photos.PIXEL_2018_PRELOAD",
             "com.google.android.apps.photos.PIXEL_2017_PRELOAD",
-            "com.google.android.feature.PIXEL_2021_EXPERIENCE",
             "com.google.android.feature.PIXEL_2021_MIDYEAR_EXPERIENCE",
             "com.google.android.feature.PIXEL_2020_EXPERIENCE",
             "com.google.android.feature.PIXEL_2020_MIDYEAR_EXPERIENCE",
@@ -727,7 +733,7 @@ public class ApplicationPackageManager extends PackageManager {
             "com.google.android.feature.GOOGLE_EXPERIENCE"
     };
 
-    private static final String[] featuresPixel2021 = {
+    private static final String[] featuresPixel6 = {
             "com.google.android.feature.PIXEL_2021_EXPERIENCE"
     };
 
@@ -741,15 +747,18 @@ public class ApplicationPackageManager extends PackageManager {
 
     @Override
     public boolean hasSystemFeature(String name, int version) {
+        boolean isPixel6Device = Arrays.asList(pixel6Codenames).contains(SystemProperties.get(DEVICE));
         String packageName = ActivityThread.currentPackageName();
         if (packageName != null &&
                 packageName.equals("com.google.android.apps.photos") &&
                 SystemProperties.getBoolean("persist.sys.pixelprops.gphotos", true)) {
             if (Arrays.asList(featuresPixel).contains(name)) return false;
             if (Arrays.asList(featuresNexus).contains(name)) return true;
-        } else if (packageName != null &&
-                packageName.equals("com.google.android.apps.photos")) {
-            if (Arrays.asList(featuresPixel2021).contains(name)) return false;
+        }
+        if (isPixel6Device) {
+            if (Arrays.asList(featuresPixel6).contains(name)) return true;
+        } else {
+            if (Arrays.asList(featuresPixel6).contains(name)) return false;
         }
         if (Arrays.asList(featuresPixel).contains(name)) return true;
         return mHasSystemFeatureCache.query(new HasSystemFeatureQuery(name, version));

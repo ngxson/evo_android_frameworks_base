@@ -205,7 +205,7 @@ public class SystemSettingsValidators {
         VALIDATORS.put(System.NOTIFICATION_LIGHT_PULSE, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.DOZE_ON_CHARGE, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.RINGTONE_VIBRATION_PATTERN, new InclusiveIntegerRangeValidator(0, 5));
-        VALIDATORS.put(System.SCREEN_OFF_FOD, BOOLEAN_VALIDATOR);
+        VALIDATORS.put(System.UDFPS_SCREEN_OFF, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.CUSTOM_RINGTONE_VIBRATION_PATTERN,
                 new Validator() {
                     @Override
@@ -239,17 +239,6 @@ public class SystemSettingsValidators {
         VALIDATORS.put(System.QQS_SHOW_BRIGHTNESS, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.QS_BRIGHTNESS_POSITION_BOTTOM, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.QS_SHOW_AUTO_BRIGHTNESS_BUTTON, BOOLEAN_VALIDATOR);
-        VALIDATORS.put(
-                System.COLOR_BUCKET_OVERLAY,
-                new Validator() {
-                    @Override
-                    public boolean validate(String value) {
-                        if (value == null && value.isEmpty()) {
-                            return false;
-                        }
-                        return true;
-                    }
-                });
         VALIDATORS.put(System.ENABLE_FLOATING_ROTATION_BUTTON, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.STATUS_BAR_NOTIF_COUNT, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.LOCKSCREEN_SMALL_CLOCK, BOOLEAN_VALIDATOR);

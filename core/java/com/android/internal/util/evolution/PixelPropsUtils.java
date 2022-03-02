@@ -39,14 +39,19 @@ public class PixelPropsUtils {
 
     private static final Map<String, Object> propsToChangePixel5;
     private static final String[] packagesToChangePixel5 = {
+            "com.google.android.apps.photos",
             "com.google.android.apps.recorder",
+            "com.google.android.apps.translate",
+            "com.google.android.apps.turbo",
+            "com.google.android.apps.turboadapter",
+            "com.google.android.apps.wearables.maestro.companion",
             "com.google.android.googlequicksearchbox",
-            "com.google.android.tts"
+            "com.google.android.tts",
+            "com.google.audio.hearing.visualization.accessibility.scribe"
     };
 
     private static final Map<String, Object> propsToChangePixelXL;
     private static final String[] packagesToChangePixelXL = {
-            "com.google.android.apps.photos",
             "com.samsung.accessory",
             "com.samsung.accessory.fridaymgr",
             "com.samsung.accessory.berrymgr",
@@ -92,7 +97,6 @@ public class PixelPropsUtils {
             "com.tencent.ig",
             "com.pubg.imobile",
             "com.pubg.krmobile",
-            "com.pubg.newstate",
             "com.vng.pubgmobile",
             "com.rekoo.pubgm",
             "com.tencent.tmgp.pubgmhd",
@@ -116,7 +120,7 @@ public class PixelPropsUtils {
             "com.google.android.MTCL83",
             "com.google.android.UltraCVM",
             "com.google.android.apps.cameralite",
-            "com.google.android.dialer",
+            "com.google.android.youtube",
             "com.google.ar.core"
     };
 
@@ -145,7 +149,7 @@ public class PixelPropsUtils {
         propsToChangePixel6.put("DEVICE", "raven");
         propsToChangePixel6.put("PRODUCT", "raven");
         propsToChangePixel6.put("MODEL", "Pixel 6 Pro");
-        propsToChangePixel6.put("FINGERPRINT", "google/raven/raven:12/SQ1D.220205.003/8069835:user/release-keys");
+        propsToChangePixel6.put("FINGERPRINT", "google/raven/raven:12/SQ1D.220205.004/8151327:user/release-keys");
         propsToChangePixel5 = new HashMap<>();
         propsToChangePixel5.put("BRAND", "google");
         propsToChangePixel5.put("MANUFACTURER", "Google");
@@ -196,10 +200,19 @@ public class PixelPropsUtils {
             Map<String, Object> propsToChange = propsToChangePixel6;
 
             if (Arrays.asList(packagesToChangePixel5).contains(packageName)) {
+                if (packageName.equals("com.google.android.apps.photos")) {
+                    if (!SystemProperties.getBoolean("persist.sys.pixelprops.gphotos", true))
+                        return;
+                }
                 propsToChange = propsToChangePixel5;
             }
 
-            if (Arrays.asList(packagesToChangePixelXL).contains(packageName)) {
+            if ((Arrays.asList(packagesToChangePixelXL).contains(packageName))
+                    || (packageName.equals("com.google.android.apps.photos"))) {
+                if ((packageName.equals("com.google.android.apps.photos")
+                        && !SystemProperties.getBoolean("persist.sys.pixelprops.gphotos", true))) {
+                    return;
+                }
                 propsToChange = propsToChangePixelXL;
             }
 
@@ -213,6 +226,11 @@ public class PixelPropsUtils {
                 }
                 if (DEBUG) Log.d(TAG, "Defining " + key + " prop for: " + packageName);
                 setPropValue(key, value);
+            }
+            if (isPixelDevice) {
+                if (packageName.equals(PACKAGE_GMS)) {
+                    setPropValue("MODEL", Build.MODEL + " ");
+                }
             }
             // Set proper indexing fingerprint
             if (packageName.equals("com.google.android.settings.intelligence")) {
