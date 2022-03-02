@@ -5393,6 +5393,12 @@ public final class Settings {
         public static final String POWERMENU_ONTHEGO = "powermenu_onthego";
 
         /**
+         * Whether to display the Device controls option in the power menu
+         * @hide
+         */
+        public static final String POWERMENU_DEVICECONTROLS = "powermenu_devicecontrols";
+
+        /**
          * Double tap on lockscreen to sleep
          * @hide
          */
@@ -6108,12 +6114,12 @@ public final class Settings {
         public static final String ON_THE_GO_CAMERA = "on_the_go_camera";
 
         /**
-         * Enable fod detection even when screen is off
+         * Enable UDFPS detection even when screen is off
          * Default value is 0
          * @hide
          */
         @Readable
-        public static final String SCREEN_OFF_FOD = "screen_off_fod";
+        public static final String UDFPS_SCREEN_OFF = "udfps_screen_off";
 
         /**
          * Whether to pulse ambient on new music tracks
@@ -6138,16 +6144,126 @@ public final class Settings {
         public static final String UDFPS_HAPTIC_FEEDBACK = "udfps_haptic_feedback";
 
         /**
-         * FOD pressed color
+         * Whether to disable Night Light feature during UDFPS unlock
          * @hide
          */
-        public static final String FOD_COLOR = "fod_color";
+        public static final String UDFPS_NIGHT_LIGHT = "udfps_night_light";
 
         /**
-         * FOD night light
+         * Gestures nav: left long back swipe action
          * @hide
          */
-        public static final String FOD_NIGHT_LIGHT = "fod_night_light";
+        public static final String LEFT_LONG_BACK_SWIPE_ACTION = "left_long_back_swipe_action";
+
+        /**
+         * Gestures nav: left long back swipe app action
+         * @hide
+         */
+        public static final String LEFT_LONG_BACK_SWIPE_APP_ACTION = "left_long_back_swipe_app_action";
+
+        /**
+         * Display friendly name of custom application launched when
+         * using the long left back swipe app action
+         * @hide
+         */
+        public static final String LEFT_LONG_BACK_SWIPE_APP_FR_ACTION = "left_long_back_swipe_app_fr_action";
+
+        /**
+         * Launch custom activity when using the long left back swipe app action
+         *
+         * @hide
+         */
+        public static final String LEFT_LONG_BACK_SWIPE_APP_ACTIVITY_ACTION = "left_long_back_swipe_app_activity_action";
+
+        /**
+         * Gestures nav: right long back swipe action
+         * @hide
+         */
+        public static final String RIGHT_LONG_BACK_SWIPE_ACTION = "right_long_back_swipe_action";
+
+        /**
+         * Gestures nav: right long back swipe app action
+         * @hide
+         */
+        public static final String RIGHT_LONG_BACK_SWIPE_APP_ACTION = "right_long_back_swipe_app_action";
+
+        /**
+         * Display friendly name of custom application launched when
+         * using the long right back swipe app action
+         * @hide
+         */
+        public static final String RIGHT_LONG_BACK_SWIPE_APP_FR_ACTION = "right_long_back_swipe_app_fr_action";
+
+        /**
+         * Launch custom activity when using the long right back swipe app action
+         *
+         * @hide
+         */
+        public static final String RIGHT_LONG_BACK_SWIPE_APP_ACTIVITY_ACTION = "right_long_back_swipe_app_activity_action";
+
+        /**
+         * Gestures nav: long back swipe timeout
+         * @hide
+         */
+        public static final String LONG_BACK_SWIPE_TIMEOUT = "long_back_swipe_timeout";
+
+        /**
+         * Gestures nav: whether to use extended swipe instead of timeout to trigger custom actions
+         * @hide
+         */
+        public static final String BACK_SWIPE_EXTENDED = "back_swipe_extended";
+
+        /**
+         * Gestures nav: left long back swipe action
+         * @hide
+         */
+        public static final String LEFT_VERTICAL_BACK_SWIPE_ACTION = "left_vertical_back_swipe_action";
+
+        /**
+         * Gestures nav: left long back swipe app action
+         * @hide
+         */
+        public static final String LEFT_VERTICAL_BACK_SWIPE_APP_ACTION = "left_vertical_back_swipe_app_action";
+
+        /**
+         * Display friendly name of custom application launched when
+         * using the long left back swipe app action
+         * @hide
+         */
+        public static final String LEFT_VERTICAL_BACK_SWIPE_APP_FR_ACTION = "left_vertical_back_swipe_app_fr_action";
+
+        /**
+         * Launch custom activity when using the long left back swipe app action
+         *
+         * @hide
+         */
+        public static final String LEFT_VERTICAL_BACK_SWIPE_APP_ACTIVITY_ACTION = "left_vertical_back_swipe_app_activity_action";
+
+        /**
+         * Gestures nav: right long back swipe action
+         * @hide
+         */
+        public static final String RIGHT_VERTICAL_BACK_SWIPE_ACTION = "right_vertical_back_swipe_action";
+
+        /**
+         * Gestures nav: right long back swipe app action
+         * @hide
+         */
+        public static final String RIGHT_VERTICAL_BACK_SWIPE_APP_ACTION = "right_vertical_back_swipe_app_action";
+
+        /**
+         * Display friendly name of custom application launched when
+         * using the long right back swipe app action
+         * @hide
+         */
+        public static final String RIGHT_VERTICAL_BACK_SWIPE_APP_FR_ACTION = "right_vertical_back_swipe_app_fr_action";
+
+        /**
+         * Launch custom activity when using the long right back swipe app action
+         *
+         * @hide
+         */
+        public static final String RIGHT_VERTICAL_BACK_SWIPE_APP_ACTIVITY_ACTION = "right_vertical_back_swipe_app_activity_action";
 
         /**
          * Whether to show brightness slider in qs panel.
@@ -6177,13 +6293,6 @@ public final class Settings {
          * @hide
          */
         public static final String QS_SHOW_AUTO_BRIGHTNESS_BUTTON = "qs_show_auto_brightness_button";
-
-        /**
-         * Setting to hold the current set overlay for color bucket.
-         * overlay package name (String)
-         * @hide
-         */
-        public static final String COLOR_BUCKET_OVERLAY = "color_bucket_overlay";
 
         /**
          * Adaptive playback
@@ -6236,12 +6345,6 @@ public final class Settings {
          * @hide
          */
         public static final String UDFPS_ICON = "udfps_icon";
-
-        /**
-         * Volume panel on left
-         * @hide
-         */
-        public static final String VOLUME_PANEL_ON_LEFT = "volume_panel_on_left";
 
         /**
          * Whether or not gaming mode is enabled.
@@ -6365,6 +6468,12 @@ public final class Settings {
          * @hide
          */
         public static final String FORCE_FULLSCREEN_CUTOUT_APPS = "force_full_screen_cutout_apps";
+
+        /**
+         * Whether to take partial screenshot with volume down + power click.
+         * @hide
+         */
+        public static final String CLICK_PARTIAL_SCREENSHOT = "click_partial_screenshot";
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to
@@ -6511,7 +6620,6 @@ public final class Settings {
             PRIVATE_SETTINGS.add(FLASHLIGHT_ON_CALL);
             PRIVATE_SETTINGS.add(FLASHLIGHT_ON_CALL_IGNORE_DND);
             PRIVATE_SETTINGS.add(FLASHLIGHT_ON_CALL_RATE);
-            PRIVATE_SETTINGS.add(COLOR_BUCKET_OVERLAY);
             PRIVATE_SETTINGS.add(HEADSET_CONNECT_PLAYER);
             PRIVATE_SETTINGS.add(SCREENSHOT_TYPE);
         }
@@ -11045,7 +11153,6 @@ public final class Settings {
         @SystemApi
         public static final int VOLUME_HUSH_MUTE_NO_MEDIA = 3;
         /** @hide */
-        @SystemApi
         public static final int VOLUME_HUSH_CYCLE = 4;
 
         /**
@@ -11617,6 +11724,12 @@ public final class Settings {
          */
         @Readable
         public static final String MONET_ENGINE_WHITE_LUMINANCE = "monet_engine_white_luminance_user";
+
+        /**
+         * Face Unlock Method
+         * @hide
+         */
+        public static final String FACE_UNLOCK_METHOD = "face_unlock_method";
 
         /**
          * These entries are considered common between the personal and the managed profile,

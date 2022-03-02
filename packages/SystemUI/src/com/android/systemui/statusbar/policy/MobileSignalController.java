@@ -143,7 +143,6 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
     private ImsManager mImsManager;
     private FeatureConnector<ImsManager> mFeatureConnector;
     private int mCallState = TelephonyManager.CALL_STATE_IDLE;
-    private boolean mShowVolteIcon;
 
     private boolean mDataDisabledIcon;
     private boolean mRoamingIconAllowed;
@@ -193,8 +192,6 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
         mLastState.networkNameData = mCurrentState.networkNameData = networkName;
         mLastState.enabled = mCurrentState.enabled = hasMobileData;
         mLastState.iconGroup = mCurrentState.iconGroup = mDefaultIcons;
-
-        mShowVolteIcon = mContext.getResources().getBoolean(R.bool.config_display_volte);
 
         int phoneId = mSubscriptionInfo.getSimSlotIndex();
         mFeatureConnector = new FeatureConnector(mContext, phoneId,
@@ -373,13 +370,13 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
                 Settings.System.ROAMING_INDICATOR_ICON, 1,
                 UserHandle.USER_CURRENT) == 1;
         mVoLTEicon = Settings.System.getIntForUser(resolver,
-                Settings.System.VOLTE_ICON_STYLE, 0,
+                Settings.System.VOLTE_ICON_STYLE, 1,
                 UserHandle.USER_CURRENT);
         mOverride = Settings.System.getIntForUser(resolver,
                 Settings.System.VOLTE_VOWIFI_OVERRIDE, 1,
                 UserHandle.USER_CURRENT) == 1;
         mVoWIFIicon = Settings.System.getIntForUser(resolver,
-                Settings.System.VOWIFI_ICON_STYLE, 0,
+                Settings.System.VOWIFI_ICON_STYLE, 1,
                 UserHandle.USER_CURRENT);
         mConfig = Config.readConfig(mContext);
         setConfiguration(mConfig);
@@ -552,7 +549,7 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
             }
         } else if (mImsManager != null && mVoLTEicon > 0 && isVolteAvailable()) {
             switch (mVoLTEicon) {
- 	        // OnePlus
+                // OnePlus
                 case 1:
                     resId = R.drawable.ic_volte;
                     break;
@@ -1216,9 +1213,7 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
     private final BroadcastReceiver mVolteSwitchObserver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             Log.d(mTag, "action=" + intent.getAction());
-            if (mShowVolteIcon) {
-                notifyListeners();
-            }
+            notifyListeners();
         }
     };
 }
