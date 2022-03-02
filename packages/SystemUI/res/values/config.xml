@@ -99,7 +99,7 @@
 
     <!-- The default tiles to display in QuickSettings -->
     <string name="quick_settings_tiles_default" translatable="false">
-        wifi,cell,bt,flashlight,dnd,alarm,airplane,controls,wallet,rotation,battery,cast,screenrecord,mictoggle,cameratoggle
+        internet,bt,flashlight,dnd,alarm,airplane,nfc,controls,wallet,rotation,battery,cast,screenrecord,location,hotspot
     </string>
 
     <!-- The minimum number of tiles to display in QuickSettings -->
@@ -107,7 +107,7 @@
 
     <!-- Tiles native to System UI. Order should match "quick_settings_tiles_default" -->
     <string name="quick_settings_tiles_stock" translatable="false">
-        internet,wifi,cell,bt,flashlight,dnd,alarm,airplane,controls,wallet,rotation,battery,cast,screenrecord,mictoggle,cameratoggle,location,nfc,hotspot,inversion,saver,dark,work,night,reverse,reduce_brightness,caffeine,ambient_display,usb_tether,sync,sound,screenshot,heads_up,cpuinfo,reboot,aod,dataswitch,volume_panel,compass,fpsinfo,onthego,gamingmode
+        internet,wifi,cell,bt,flashlight,dnd,alarm,airplane,controls,wallet,rotation,battery,cast,screenrecord,mictoggle,cameratoggle,location,nfc,hotspot,inversion,saver,dark,work,night,reverse,reduce_brightness,caffeine,ambient_display,usb_tether,sync,sound,screenshot,heads_up,cpuinfo,reboot,aod,dataswitch,volume_panel,compass,fpsinfo,onthego,gamingmode,powershare
     </string>
 
     <!-- The tiles to display in QuickSettings -->
@@ -459,9 +459,9 @@
         <item>30</item>
         <item>60</item>
         <item>120</item>
-		<item>300</item>
-		<item>720</item>
-		<item>1440</item>
+        <item>300</item>
+        <item>720</item>
+        <item>1440</item>
     </integer-array>
 
     <!-- Smart replies in notifications: Whether smart replies in notifications are enabled. -->
@@ -674,8 +674,5 @@
          1 - Override the setting to always bypass keyguard
          2 - Override the setting to never bypass keyguard -->
     <integer name="config_face_unlock_bypass_override">0</integer>
-
-    <!-- Whether to show VoLTE icon in the status bar -->
-    <bool name="config_display_volte">true</bool>
 
 </resources>

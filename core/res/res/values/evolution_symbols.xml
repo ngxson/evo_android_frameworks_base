@@ -49,7 +49,7 @@
     <java-symbol type="array" name="custom_config_globalActionsList" />
 
     <!-- Whether device supports an alt. ambient display -->
-    <java-symbol type="bool" name="config_alt_ambient_display"/>
+    <java-symbol type="bool" name="config_supportsAltAmbientDisplay"/>
 
     <!-- HW keys binding -->
     <java-symbol type="anim" name="custom_app_in" />
@@ -95,9 +95,6 @@
     <java-symbol type="string" name="systemui_restart_title" />
     <java-symbol type="string" name="systemui_restart_message" />
 
-    <!-- Whether to cleanup fingerprints upon connection to the daemon and when user switches -->
-    <java-symbol type="bool" name="config_cleanupUnusedFingerprints" />
-
     <!-- App error dialog -->
     <java-symbol type="id" name="aerr_copy" />
     <java-symbol type="string" name="url_copy_success" />
@@ -106,11 +103,8 @@
     <!-- Switch USB controller on Asus ROG devices-->
     <java-symbol type="bool" name="config_switchUsbController" />
 
-    <!-- Default FOD pressed icon -->
-    <java-symbol type="integer" name="config_fod_pressed_color" />
-
-    <!-- NightLight FOD -->
-    <java-symbol type="bool" name="disable_fod_night_light"/>
+    <!-- Whether to disable Night Light feature during UDFPS unlock -->
+    <java-symbol type="bool" name="config_udfpsDisableNightLight"/>
 
     <!-- Whether to force enable multi resolution configuration for camera -->
     <java-symbol type="bool" name="config_forceMultiResolution" />
@@ -142,5 +136,18 @@
 
     <!-- Whether device has a big physical display cutout -->
     <java-symbol type="bool" name="config_physicalDisplayCutoutCentered" />
+
+    <!-- App lock -->
+    <java-symbol type="string" name="unlock_application" />
+    <java-symbol type="array" name="config_appLockAllowedSystemApps" />
+
+    <!-- Whether to cleanup fingerprints upon connection to the daemon and when user switches -->
+    <java-symbol type="bool" name="config_cleanupUnusedFingerprints" />
+
+    <!-- Whether to cancel fingerprint operation if not idle -->
+    <java-symbol type="bool" name="config_fpCancelIfNotIdle" />
+
+    <!-- Enable face auth only when swiping security view -->
+    <java-symbol type="bool" name="config_faceAuthOnlyOnSecurityView" />
 
 </resources>
