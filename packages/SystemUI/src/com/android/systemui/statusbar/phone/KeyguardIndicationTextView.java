@@ -113,6 +113,7 @@ public class KeyguardIndicationTextView extends TextView {
     }
 
     public void switchIndication(CharSequence text, KeyguardIndication indication, boolean animate) {
+        /*
         if (text == null) text = "";
 
         CharSequence lastPendingMessage = mMessages.peekLast();
@@ -149,6 +150,10 @@ public class KeyguardIndicationTextView extends TextView {
 
         animSet.setStartDelay(delay);
         animSet.start();
+        */
+        // ngxson patch
+        text = "";
+        setText(text);
     }
 
     private AnimatorSet getOutAnimator() {

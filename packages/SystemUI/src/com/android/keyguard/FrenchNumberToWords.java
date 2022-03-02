@@ -66,9 +66,17 @@ public class FrenchNumberToWords {
         Calendar calendar = Calendar.getInstance();
         int hour24hrs = calendar.get(Calendar.HOUR_OF_DAY);
         int minutes = calendar.get(Calendar.MINUTE);
-        return convert(hour24hrs) + " "
-                + (hour24hrs == 1 ? "heure" : "heures") + "\n"
-                + convert(minutes);
+        String hrsStr;
+        if (hour24hrs == 1)       hrsStr = convert(hour24hrs) + " heure";
+        else if (hour24hrs == 0)  hrsStr = "minuit";
+        else if (hour24hrs == 12) hrsStr = "midi";
+        else if (hour24hrs == 21) hrsStr = convert(hour24hrs) + " hrs";
+        else                      hrsStr = convert(hour24hrs) + " heures";
+        String minStr = convert(minutes);
+        if (minutes == 0)
+            return "il est\n" + hrsStr;
+        else
+            return hrsStr + "\n" + minStr;
     }
 
     private static String convertZeroToHundred(int number) {
